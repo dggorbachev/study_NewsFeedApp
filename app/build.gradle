@@ -16,6 +16,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+    
     buildTypes {
         release {
             minifyEnabled false
@@ -39,7 +43,9 @@ dependencies {
     def room_version = "2.4.2"
     def coroutines_version = "1.6.0"
     def glide_version = "4.13.0"
-    def adapterdelegates_version = "4.3.2"
+    def adapter_delegates_version = "4.3.2"
+    def view_binding_delegate_version = "1.5.1-beta01"
+    def navigation_version = "2.4.2"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -73,5 +79,15 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
     // AdapterDelegates
-    implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl:$adapterdelegates_version"
+    implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl:$adapter_delegates_version"
+    implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$adapter_delegates_version"
+    // Kirich's viewBinding delegate
+    implementation "com.github.kirich1409:viewbindingpropertydelegate:$view_binding_delegate_version"
+
+    // Navigation Kotlin
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+    // Feature module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$navigation_version"
 }

@@ -2,6 +2,7 @@ package com.dggorbachev.newsfeedapp
 
 import android.app.Application
 import com.dggorbachev.newsfeedapp.di.appModule
+import com.dggorbachev.newsfeedapp.feature.main_screen.di.mainScreenModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -13,7 +14,7 @@ class App : Application() {
         startKoin {
             androidLogger()
             androidContext(this@App)
-            modules(appModule)
+            modules(appModule, mainScreenModule)
         }
     }
 }
