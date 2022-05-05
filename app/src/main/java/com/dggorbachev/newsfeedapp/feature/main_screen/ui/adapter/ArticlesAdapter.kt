@@ -1,36 +1,43 @@
 package com.dggorbachev.newsfeedapp.feature.main_screen.ui.adapter
 
-import androidx.recyclerview.widget.DiffUtil
-import com.dggorbachev.newsfeedapp.databinding.ActivityMainBinding
-import com.dggorbachev.newsfeedapp.databinding.ItemArticleBinding
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.dggorbachev.newsfeedapp.R
 import com.dggorbachev.newsfeedapp.feature.main_screen.domain.model.Article
-import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
-import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
-class ArticlesAdapter : AsyncListDifferDelegationAdapter<Article>(ArticleDiffUtilCallback()) {
-    init {
-        delegatesManager.addDelegate(articleAdapterDelegate())
+class ArticlesAdapter(private var articleList: List<Article>) :
+    RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val author: TextView
+        val title: TextView
+
+        init {
+            this.author = view.findViewById<TextView>(R.id.authorTextView)
+            this.title = view.findViewById<TextView>(R.id.descriptionTextView)
+        }
     }
 
-    private fun articleAdapterDelegate() =
-        adapterDelegateViewBinding<Article, Article, ItemArticleBinding>(
-            { layoutInflater, parent -> ItemArticleBinding.inflate(layoutInflater, parent, false) }
-        ) {
-            bind {
-                binding.apply {
-                    authorTextView.text = item.author
-                    descriptionTextView.text = item.description
-                }
-            }
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_article, parent, false)
 
-    class ArticleDiffUtilCallback : DiffUtil.ItemCallback<Article>() {
-        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
-            return oldItem.url == newItem.url
-        }
+        return ViewHolder(view)
+    }
 
-        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
-            return oldItem == newItem
-        }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.author.text = articleList[position].author
+        holder.title.text = articleList[position].title
+    }
+
+    override fun getItemCount(): Int {
+        return articleList.size
+    }
+
+    fun updateArticles(newArticles: List<Article>) {
+        articleList = newArticles
+        notifyDataSetChanged()
     }
 }
