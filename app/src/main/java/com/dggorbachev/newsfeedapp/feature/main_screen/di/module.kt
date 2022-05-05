@@ -23,6 +23,7 @@ val mainScreenModule = module {
             .build()
     }
 
+    // logging api data
     val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor()
     interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
     val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()

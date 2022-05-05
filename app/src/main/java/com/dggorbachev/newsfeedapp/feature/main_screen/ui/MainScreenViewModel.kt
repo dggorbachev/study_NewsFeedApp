@@ -8,17 +8,21 @@ class MainScreenViewModel(private val newsFeedInteractor: NewsFeedInteractor) :
     BaseViewModel<ViewState>() {
 
     init {
-        processUiEvent(UiEvent.GetCurrentNews)
+        processDataEvent(DataEvent.OnLoadData)
     }
 
     override fun initialViewState(): ViewState {
-        return ViewState(emptyList(), false)
+        return ViewState(
+            articleList = emptyList(),  // or listOf()
+            errorMessage = "",
+            isLoading = false
+        )
     }
 
     override suspend fun reduce(event: Event, previousState: ViewState): ViewState? {
         when (event) {
-            is UiEvent.GetCurrentNews -> {
-                processDataEvent(DataEvent.OnLoadData)
+            is DataEvent.OnLoadData -> {
+                processDataEvent(DataEvent.StartLoadData)
                 newsFeedInteractor.getNews().fold(
                     onError = {
                         processDataEvent(
@@ -28,11 +32,11 @@ class MainScreenViewModel(private val newsFeedInteractor: NewsFeedInteractor) :
                         )
                     },
                     onSuccess = {
-                        processDataEvent(DataEvent.SuccessNewsRequest(it))
+                        processDataEvent(DataEvent.SuccessNewsRequest(articleList = it))
                     }
                 )
             }
-            is DataEvent.OnLoadData -> {
+            is DataEvent.StartLoadData -> {
                 return previousState.copy(isLoading = true)
             }
             is DataEvent.SuccessNewsRequest -> {

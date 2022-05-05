@@ -3,16 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.384375" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2305" />
         <entry key="app/src/main/res/drawable/add_to_bookmarks.xml" value="0.2305" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2305" />
         <entry key="app/src/main/res/drawable/news_bookmark_multiple_outline.xml" value="0.164" />
+        <entry key="app/src/main/res/drawable/news_feed_icon.xml" value="0.2305" />
         <entry key="app/src/main/res/drawable/news_feed_variant_outline.xml" value="0.2305" />
         <entry key="app/src/main/res/drawable/news_search_outline.xml" value="0.164" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.30371221995075387" />
+        <entry key="app/src/main/res/layout/fragment_bookmarks.xml" value="0.2659256092347157" />
         <entry key="app/src/main/res/layout/fragment_bottom_navigation.xml" value="0.28125" />
         <entry key="app/src/main/res/layout/fragment_mainscreen.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_news_feed_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_article.xml" value="0.29543304443359375" />
-        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.30846557617187503" />
       </map>
     </option>
   </component>
