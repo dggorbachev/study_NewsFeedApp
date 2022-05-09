@@ -5,7 +5,7 @@
         android:icon="@drawable/news_icon"
         android:title="News" />
     <item
-        android:id="@+id/bookmarkTab"
+        android:id="@+id/bookmarksTab"
         android:icon="@drawable/bookmarks_icon"
         android:title="@string/bookmarks" />
 </menu>

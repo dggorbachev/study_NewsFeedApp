@@ -3,15 +3,22 @@ package com.dggorbachev.newsfeedapp.base.utils
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-fun RecyclerView.setAdapterAndCleanupOnDetachFromWindow(recyclerViewAdapter: RecyclerView.Adapter<*>) {
-    adapter = recyclerViewAdapter
-    addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
-        override fun onViewDetachedFromWindow(v: View?) {
-            adapter = null
-            removeOnAttachStateChangeListener(this)
+fun View.setThrottledClickListener(delay: Long = 200L, onClick: (View) -> Unit) {
+    setOnClickListener {
+        throttle(delay) {
+            onClick(it)
         }
+    }
+}
 
-        override fun onViewAttachedToWindow(v: View?) {
-        }
-    })
+private var lastClickTimestamp = 0L
+fun View.throttle(delay: Long = 200L, action: () -> Unit): Boolean {
+    val currentTimestamp = System.currentTimeMillis()
+    val delta = currentTimestamp - lastClickTimestamp
+    if (delta !in 0L..delay) {
+        lastClickTimestamp = currentTimestamp
+        action()
+        return true
+    }
+    return false
 }

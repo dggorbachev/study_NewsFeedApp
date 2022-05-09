@@ -1,5 +1,7 @@
 package com.dggorbachev.newsfeedapp.feature.main_screen.di
 
+import com.dggorbachev.newsfeedapp.feature.bookmarks_screen.data.BookmarksRepo
+import com.dggorbachev.newsfeedapp.feature.bookmarks_screen.domain.BookmarksInteractor
 import com.dggorbachev.newsfeedapp.feature.main_screen.data.api.NewsApi
 import com.dggorbachev.newsfeedapp.feature.main_screen.data.api.NewsRemoteSource
 import com.dggorbachev.newsfeedapp.feature.main_screen.data.api.NewsRepo
@@ -48,10 +50,10 @@ val mainScreenModule = module {
     }
 
     single<NewsFeedInteractor> {
-        NewsFeedInteractor(get<NewsRepo>())
+        NewsFeedInteractor(get<NewsRepo>(), get<BookmarksRepo>())
     }
 
     viewModel<MainScreenViewModel> {
-        MainScreenViewModel(get<NewsFeedInteractor>())
+        MainScreenViewModel(get<NewsFeedInteractor>(), get<BookmarksInteractor>())
     }
 }

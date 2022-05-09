@@ -9,13 +9,18 @@ data class ViewState(
     val isLoading: Boolean
 )
 
-sealed class UiEvent() : Event {
-    class OnArticleClick : UiEvent()
+sealed class UiEvent : Event {
+    data class OnBookmarkClick(val article: Article) : UiEvent()
+    data class OnBookmarksFetched(val articles: List<Article>) : UiEvent()
 }
 
-sealed class DataEvent() : Event {
+sealed class DataEvent : Event {
     object StartLoadData : DataEvent()
     object OnLoadData : DataEvent()
     data class SuccessNewsRequest(val articleList: List<Article>) : DataEvent()
     data class ErrorNewsRequest(val errorMessage: String) : DataEvent()
+}
+
+sealed class OpenArticleEvent : Event {
+    data class OnArticleClick(val article: Article) : UiEvent()
 }

@@ -5,73 +5,74 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/authorTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
-        app:layout_constraintEnd_toStartOf="@+id/publishedAtTextView"
-        app:layout_constraintStart_toEndOf="@+id/articleImageImageView"
-        app:layout_constraintTop_toTopOf="@+id/articleImageImageView"
-        app:layout_constraintVertical_weight="2"
-        tools:text="Author" />
-
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:maxLines="3"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/authorTextView"
-        app:layout_constraintTop_toBottomOf="@+id/authorTextView"
-        app:layout_constraintVertical_weight="5"
-        tools:text="TextView" />
-
     <ImageView
-        android:id="@+id/articleImageImageView"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
+        android:id="@+id/ivArticleImage"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:contentDescription="@string/article_s_image"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/news_feed_icon" />
+        app:srcCompat="@drawable/headline_news_logo_png_transparent" />
 
     <TextView
-        android:id="@+id/publishedAtTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/authorTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/authorTextView"
-        app:layout_constraintTop_toTopOf="@+id/authorTextView"
-        app:layout_constraintVertical_weight="2"
-        tools:text="2021-10-19 01:06" />
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:maxLines="3"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/ivArticleImage"
+        app:layout_constraintStart_toStartOf="@id/ivArticleImage"
+        app:layout_constraintTop_toBottomOf="@id/ivArticleImage"
+        tools:text="Title" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/addToBookmarksIcon"-->
-<!--        android:layout_width="40dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:layout_marginBottom="8dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/articleImageImageView"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/articleImageImageView"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/articleImageImageView"-->
-<!--        app:layout_constraintVertical_bias="0.0"-->
-<!--        app:srcCompat="@drawable/news_feed_icon" />-->
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:maxLines="5"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        tools:text="Description" />
+
+    <TextView
+        android:id="@+id/tvPublishedAt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/tvDescription"
+        app:layout_constraintStart_toStartOf="@id/tvDescription"
+        app:layout_constraintTop_toBottomOf="@id/tvDescription"
+        tools:text="PublishedAt" />
+
+    <CheckBox
+        android:id="@+id/cbBookmarkAdd"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:button="@drawable/favorite_selector"
+        android:buttonTint="@color/dark_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPublishedAt" />
+
+    <TextView
+        android:id="@+id/spacer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@id/cbBookmarkAdd"
+        app:layout_constraintTop_toBottomOf="@id/cbBookmarkAdd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
