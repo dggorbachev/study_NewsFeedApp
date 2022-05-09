@@ -10,7 +10,7 @@ data class ArticleModel(
     @SerializedName("publishedAt")
     val publishedAt: String? = "",
     @SerializedName("title")
-    val title: String? = "",
+    val title: String,
     @SerializedName("url")
     val url: String,
     @SerializedName("urlToImage")
