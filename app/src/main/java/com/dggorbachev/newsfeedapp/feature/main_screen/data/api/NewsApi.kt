@@ -29,7 +29,7 @@ interface NewsApi {
     @GET("v2/top-headlines")
     suspend fun getTopHeadlinesNews(
         @Query("apiKey") apiKey: String = "e9008ca813cd40dc972694be293c8e90",
-        @Query("country") country: String = "ru",
+        @Query("country") country: String = "us",
         @Query("category") category: String = "",
         @Query("sources") sources: String = "",
         @Query("q") query: String = "",
